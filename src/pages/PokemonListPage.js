@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import PokemonCard from "../components/PokemonCard";
 
+// 1. Filter input value
+
 const PokemonListPage = () => {
   const [pokemonList, setPokemonList] = useState(null);
+  const [filterInput, setFilterInput] = useState(""); // 1. Filter input value
 
   useEffect(() => {
     // console.log("Hello???");
@@ -17,13 +20,29 @@ const PokemonListPage = () => {
     getPokemons();
   }, []);
 
+  const updateFilterInput = (event) => {
+    setFilterInput(event.target.value);
+  };
+
   return (
     <div>
       <h3>Pokemon</h3>
+      {/* 1.  Filter input value */}
+      <input
+        type="text"
+        value={filterInput}
+        onChange={updateFilterInput}
+        placeholder="Search Pokemon"
+      />
+      <br />
+      <br />
+      {/* 1.  Filter input value (use startsWith) */}
       {pokemonList
-        ? pokemonList.map((pokemonObj, index) => {
-            return <PokemonCard key={index} name={pokemonObj.name} />;
-          })
+        ? pokemonList
+            .filter((pokemonObj) => pokemonObj.name.startsWith(filterInput))
+            .map((pokemonObj, index) => {
+              return <PokemonCard key={index} name={pokemonObj.name} />;
+            })
         : "Loading.."}
     </div>
   );
