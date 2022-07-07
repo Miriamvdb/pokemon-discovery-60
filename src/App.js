@@ -6,7 +6,7 @@ import NavBar from "./components/NavBar";
 function App() {
   return (
     <div className="App">
-      <h1>Pokemon Discovery</h1>
+      <h1 style={{ color: "red" }}>◓ Pokemon Discovery ◓</h1>
       <NavBar />
       <br />
       <Routes>
