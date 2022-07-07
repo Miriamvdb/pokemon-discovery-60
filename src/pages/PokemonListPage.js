@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import PokemonCard from "../components/PokemonCard";
+import { useParams } from "react-router-dom";
 
 // 1. Filter input value
 
 const PokemonListPage = () => {
   const [pokemonList, setPokemonList] = useState(null);
   const [filterInput, setFilterInput] = useState(""); // 1. Filter input value
+  const params = useParams();
 
   useEffect(() => {
     // console.log("Hello???");
@@ -18,6 +20,11 @@ const PokemonListPage = () => {
       // console.log("Pokemon?", response.data);
     };
     getPokemons();
+    if (params.filterInput) {
+      console.log("hmmm");
+
+      setFilterInput(params.filterInput);
+    }
   }, []);
 
   const updateFilterInput = (event) => {

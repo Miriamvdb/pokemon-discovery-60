@@ -11,7 +11,9 @@ function App() {
       <NavBar />
       <br />
       <Routes>
-        <Route path="/" element={<PokemonListPage />} />
+        <Route path="/" element={<PokemonListPage />}>
+          <Route path="/:filter" element={<PokemonListPage />} />
+        </Route>
         <Route path="/details/:pokemonname" element={<PokemonDetailsPage />} />
       </Routes>
     </div>
