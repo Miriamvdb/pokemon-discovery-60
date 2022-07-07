@@ -1,7 +1,9 @@
+import { NavLink } from "react-router-dom";
+
 const PokemonCard = (props) => {
   return (
     <div>
-      <p>{props.name}</p>
+      <NavLink to={`/details/${props.name}`}>{props.name}</NavLink>
     </div>
   );
 };

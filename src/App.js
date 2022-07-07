@@ -1,7 +1,8 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import PokemonListPage from "./pages/PokemonsListPage";
 import NavBar from "./components/NavBar";
+import PokemonListPage from "./pages/PokemonListPage";
+import PokemonDetailsPage from "./pages/PokemonDetailsPage";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <br />
       <Routes>
         <Route path="/" element={<PokemonListPage />} />
+        <Route path="/details/:name" element={<PokemonDetailsPage />} />
       </Routes>
     </div>
   );
