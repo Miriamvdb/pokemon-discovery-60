@@ -7,7 +7,7 @@ import PokemonDetailsPage from "./pages/PokemonDetailsPage";
 function App() {
   return (
     <div className="App">
-      <h1 style={{ color: "red" }}>◓ Pokemon Discovery ◓</h1>
+      <h1 style={{ color: "black" }}>◓ Pokemon Discovery ◓</h1>
       <NavBar />
       <br />
       <Routes>
