@@ -1,0 +1,2 @@
+- Install Axios and import it: - npm i axios
+- Install React-Router: - npm i react-router-dom
