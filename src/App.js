@@ -12,7 +12,7 @@ function App() {
       <br />
       <Routes>
         <Route path="/" element={<PokemonListPage />}>
-          <Route path="/:filter" element={<PokemonListPage />} />
+          <Route path="/:filterInput" element={<PokemonListPage />} />
         </Route>
         <Route path="/details/:pokemonname" element={<PokemonDetailsPage />} />
       </Routes>

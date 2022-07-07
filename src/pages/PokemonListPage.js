@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import PokemonCard from "../components/PokemonCard";
-import { useParams } from "react-router-dom";
-
-// 1. Filter input value
+import { useNavigate, useParams } from "react-router-dom";
 
 const PokemonListPage = () => {
   const [pokemonList, setPokemonList] = useState(null);
-  const [filterInput, setFilterInput] = useState(""); // 1. Filter input value
+  const [filterInput, setFilterInput] = useState("");
   const params = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     // console.log("Hello???");
@@ -21,20 +20,20 @@ const PokemonListPage = () => {
     };
     getPokemons();
     if (params.filterInput) {
-      console.log("hmmm");
-
       setFilterInput(params.filterInput);
+    } else {
+      setFilterInput("");
     }
-  }, []);
+  }, [params.filterInput]);
 
   const updateFilterInput = (event) => {
     setFilterInput(event.target.value);
+    navigate(`/${event.target.value}`);
   };
 
   return (
     <div>
       <h3>Pokemon</h3>
-      {/* 1.  Filter input value */}
       <input
         type="text"
         value={filterInput}
@@ -43,7 +42,6 @@ const PokemonListPage = () => {
       />
       <br />
       <br />
-      {/* 1.  Filter input value (use startsWith) */}
       {pokemonList
         ? pokemonList
             .filter((pokemonObj) => pokemonObj.name.startsWith(filterInput))
